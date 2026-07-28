@@ -1,1 +1,94 @@
+{
+  "match": {
+    "id": "demo_001",
+    "homeTeam": "Manchester City",
+    "awayTeam": "Arsenal",
+    "competition": "Premier League",
+    "season": "2025/2026",
+    "matchday": 28,
+    "date": "2026-08-23"
+  },
 
+  "dashboard": {
+    "mainStats": [
+      {
+        "label": "Possession",
+        "value": "61%"
+      },
+      {
+        "label": "Shots",
+        "value": 18
+      },
+      {
+        "label": "Shots on Target",
+        "value": 7
+      },
+      {
+        "label": "xG",
+        "value": 2.34
+      }
+    ],
+
+    "advancedStats": [
+      {
+        "label": "PPDA",
+        "value": 7.9
+      },
+      {
+        "label": "Progressive Passes",
+        "value": 42
+      },
+      {
+        "label": "Recoveries",
+        "value": 63
+      },
+      {
+        "label": "High Turnovers",
+        "value": 11
+      },
+      {
+        "label": "Corners",
+        "value": 8
+      }
+    ]
+  },
+
+  "decisions": [
+    {
+      "priority": 1,
+      "severity": "high",
+      "category": "Pressing",
+      "title": "Press higher during build-up",
+      "description": "The opponent struggled when pressed inside their defensive third.",
+      "evidence": [
+        "PPDA: 7.9",
+        "11 High Turnovers",
+        "18 recoveries in the attacking third"
+      ]
+    },
+    {
+      "priority": 2,
+      "severity": "medium",
+      "category": "Attacking",
+      "title": "Exploit the left half-space",
+      "description": "Most dangerous attacks originated from the left half-space.",
+      "evidence": [
+        "42 Progressive Passes",
+        "61% possession",
+        "4 key passes from left channel"
+      ]
+    },
+    {
+      "priority": 3,
+      "severity": "low",
+      "category": "Defensive Transition",
+      "title": "Improve defensive transitions",
+      "description": "Counter-attacks generated the highest threat after losing possession.",
+      "evidence": [
+        "xG conceded in transition: 0.72",
+        "6 fast breaks conceded",
+        "Recoveries below expected after possession loss"
+      ]
+    }
+  ]
+}
