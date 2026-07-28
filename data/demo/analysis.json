@@ -54,37 +54,49 @@
   },
 
   "decisions": [
-    {
-      "priority": 1,
-      "severity": "high",
-      "category": "Pressing",
-      "title": "Press higher during build-up",
-      "description": "The opponent struggled when pressed inside their defensive third.",
-      "evidence": [
+   {
+  "priority": 1,
+  "severity": "high",
+  "confidence": 0.91,
+  "impact": "high",
+  "teamPhase": "Out of Possession",
+  "category": "Pressing",
+  "title": "Press higher during build-up",
+  "description": "The opponent struggled when pressed inside their defensive third.",
+  "recommendation": "Increase the pressing line during the opponent's first phase of build-up to force turnovers in dangerous areas.",
+  "evidence": [
         "PPDA: 7.9",
         "11 High Turnovers",
         "18 recoveries in the attacking third"
       ]
     },
-    {
-      "priority": 2,
-      "severity": "medium",
-      "category": "Attacking",
-      "title": "Exploit the left half-space",
-      "description": "Most dangerous attacks originated from the left half-space.",
-      "evidence": [
+  {
+  "priority": 2,
+  "severity": "medium",
+  "confidence": 0.84,
+  "impact": "medium",
+  "teamPhase": "In Possession",
+  "category": "Attacking",
+  "title": "Exploit the left half-space",
+  "description": "Most dangerous attacks originated from the left half-space.",
+  "recommendation": "Increase combinations and progressive passes through the left half-space.",
+  "evidence": [
         "42 Progressive Passes",
         "61% possession",
         "4 key passes from left channel"
       ]
     },
     {
-      "priority": 3,
-      "severity": "low",
-      "category": "Defensive Transition",
-      "title": "Improve defensive transitions",
-      "description": "Counter-attacks generated the highest threat after losing possession.",
-      "evidence": [
+  "priority": 3,
+  "severity": "low",
+  "confidence": 0.78,
+  "impact": "medium",
+  "teamPhase": "Transition",
+  "category": "Defensive Transition",
+  "title": "Improve defensive transitions",
+  "description": "Counter-attacks generated the highest threat after losing possession.",
+  "recommendation": "Reduce the distance between midfield and defensive line immediately after losing possession.",
+  "evidence": [
         "xG conceded in transition: 0.72",
         "6 fast breaks conceded",
         "Recoveries below expected after possession loss"
