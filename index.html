@@ -3,76 +3,119 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Decision Lab</title>
 
-<title>Football Decision Lab</title>
-
-<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
 
 <body>
 
-<header>
+    <header class="header">
 
-<div class="logo">
+        <div class="logo">
+            <h2>Football Decision Lab</h2>
+        </div>
 
-<h2>Football Decision Lab</h2>
+        <nav class="navigation">
 
-</div>
+            <a href="#">Home</a>
+            <a href="#">Methodology</a>
+            <a href="#">About</a>
 
-<nav>
+        </nav>
 
-<a href="#">Home</a>
+    </header>
 
-<a href="#">Methodology</a>
+    <main>
 
-<a href="#">About</a>
+        <!-- HERO -->
 
-</nav>
+        <section class="hero">
 
-</header>
-<section class="hero">
+            <div class="heroContent">
 
-    <h1>Football Decision Lab</h1>
+                <h1>Football Decision Lab</h1>
 
-    <p>
-        Helping coaching staffs make better decisions through data, AI and football knowledge.
-    </p>
+                <p>
+                    Helping coaching staffs make better decisions through data,
+                    artificial intelligence and football knowledge.
+                </p>
 
-    <button id="demoButton">
-        Analyze Demo Match
-    </button>
+                <button id="demoButton">
+                    Analyze Demo Match
+                </button>
 
-</section>
+            </div>
 
-<section id="matchInfo">
+        </section>
 
-    <h2 id="matchTitle">
-        No match loaded
-    </h2>
+        <!-- MATCH OVERVIEW -->
 
-    <p id="competition"></p>
+        <section id="matchSection" class="contentSection">
 
-    <div id="summary"></div>
+            <div class="sectionHeader">
 
-</section>
+                <h2>Match Overview</h2>
 
-<section id="results">
+            </div>
 
-    <h2>Top Decisions</h2>
+            <div id="matchOverview">
 
-    <div id="cards">
+                <p class="placeholder">
+                    No match loaded.
+                </p>
 
-        <p>No analysis yet.</p>
+            </div>
 
-    </div>
+        </section>
 
-</section>
+        <!-- DASHBOARD -->
 
-<script src="assets/js/app.js"></script>
+        <section id="dashboardSection" class="contentSection">
+
+            <div class="sectionHeader">
+
+                <h2>Performance Dashboard</h2>
+
+            </div>
+
+            <div id="dashboard">
+
+                <p class="placeholder">
+                    No statistics available.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- DECISIONS -->
+
+        <section id="decisionSection" class="contentSection">
+
+            <div class="sectionHeader">
+
+                <h2>Recommended Actions</h2>
+
+            </div>
+
+            <div id="decisionGrid">
+
+                <p class="placeholder">
+                    No recommendations available.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="assets/js/app.js"></script>
 
 </body>
 
