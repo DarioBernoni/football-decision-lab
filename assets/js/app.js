@@ -1,7 +1,10 @@
-const button = document.getElementById("demoButton");
-const cards = document.getElementById("cards");
+const demoButton = document.getElementById("demoButton");
 
-button.addEventListener("click", loadAnalysis);
+const matchOverview = document.getElementById("matchOverview");
+const dashboard = document.getElementById("dashboard");
+const decisionGrid = document.getElementById("decisionGrid");
+
+demoButton.addEventListener("click", loadAnalysis);
 
 async function loadAnalysis() {
 
@@ -15,76 +18,228 @@ async function loadAnalysis() {
 
         const analysis = await response.json();
 
-        renderAnalysis(analysis);
-
-    } catch (error) {
-
-        cards.innerHTML = `
-            <div class="card">
-                <h3>Error</h3>
-                <p>${error.message}</p>
-            </div>
-        `;
-
-        console.error(error);
+        renderMatch(analysis);
+        renderDashboard(analysis);
+        renderDecisions(analysis);
 
     }
 
-}const matchTitle = document.getElementById("matchTitle");
-const competition = document.getElementById("competition");
-const summary = document.getElementById("summary");
+    catch (error) {
 
-matchTitle.textContent =
-`${analysis.match.homeTeam} vs ${analysis.match.awayTeam}`;
+        console.error(error);
 
-competition.textContent =
-`${analysis.match.competition} • ${analysis.match.date}`;
+        decisionGrid.innerHTML = `
+            <div class="placeholder">
+                ${error.message}
+            </div>
+        `;
 
-summary.innerHTML = `
+    }
 
-<div class="summaryCard">
+}
 
-<h4>Possession</h4>
+function renderMatch(analysis) {
 
-<p>${analysis.summary.possession}</p>
+    const match = analysis.match;
 
-</div>
+    matchOverview.innerHTML = `
 
-<div class="summaryCard">
+        <div class="matchCard">
 
-<h4>Shots</h4>
+            <h3>${match.homeTeam} vs ${match.awayTeam}</h3>
 
-<p>${analysis.summary.shots}</p>
+            <p>
+                ${match.competition}
+            </p>
 
-</div>
+            <div class="matchMeta">
 
-<div class="summaryCard">
+                <span>Season ${match.season}</span>
 
-<h4>Shots on Target</h4>
+                <span>Matchday ${match.matchday}</span>
 
-<p>${analysis.summary.shotsOnTarget}</p>
+                <span>${match.date}</span>
 
-</div>
+            </div>
 
-`;
+        </div>
 
-function renderAnalysis(analysis) {
+    `;
 
-    cards.innerHTML = "";
+}
 
-    analysis.decisions.forEach(decision => {
+function renderDashboard(analysis) {
+
+    dashboard.innerHTML = "";
+
+    renderStatSection(
+        "Main Statistics",
+        analysis.dashboard.mainStats
+    );
+
+    renderStatSection(
+        "Advanced Statistics",
+        analysis.dashboard.advancedStats
+    );
+
+}
+
+function renderStatSection(title, stats) {
+
+    const section = document.createElement("div");
+
+    section.className = "dashboardSection";
+
+    const heading = document.createElement("h3");
+
+    heading.textContent = title;
+
+    const grid = document.createElement("div");
+
+    grid.className = "statsGrid";
+
+    stats.forEach(stat => {
 
         const card = document.createElement("div");
 
-        card.className = "card";
+        card.className = "statCard";
 
         card.innerHTML = `
-            <h3>#${decision.priority} · ${decision.title}</h3>
-            <p>${decision.description}</p>
+
+            <div class="statLabel">
+
+                ${stat.label}
+
+            </div>
+
+            <div class="statValue">
+
+                ${stat.value}
+
+            </div>
+
         `;
 
-        cards.appendChild(card);
+        grid.appendChild(card);
 
     });
+
+    section.appendChild(heading);
+
+    section.appendChild(grid);
+
+    dashboard.appendChild(section);
+
+}
+
+function renderDecisions(analysis) {
+
+    decisionGrid.innerHTML = "";
+
+    analysis.decisions.forEach(decision => {
+
+        const card = createDecisionCard(decision);
+
+        decisionGrid.appendChild(card);
+
+    });
+
+}
+
+function createDecisionCard(decision) {
+
+    const card = document.createElement("div");
+
+    card.className = "decisionCard";
+
+    const evidenceList = decision.evidence
+        .map(item => `<li>${item}</li>`)
+        .join("");
+
+    card.innerHTML = `
+
+        <div class="decisionHeader">
+
+            <div class="priority">
+
+                PRIORITY ${decision.priority}
+
+            </div>
+
+            <div class="category">
+
+                ${decision.category}
+
+            </div>
+
+        </div>
+
+        <h3 class="decisionTitle">
+
+            ${decision.title}
+
+        </h3>
+
+        <p class="decisionDescription">
+
+            ${decision.description}
+
+        </p>
+
+        <div class="infoBlock">
+
+            <h4>Recommendation</h4>
+
+            <p>
+
+                ${decision.recommendation}
+
+            </p>
+
+        </div>
+
+        <div class="infoBlock">
+
+            <h4>Evidence</h4>
+
+            <ul>
+
+                ${evidenceList}
+
+            </ul>
+
+        </div>
+
+        <div class="badgeContainer">
+
+            <div class="badge">
+
+                Confidence: ${Math.round(decision.confidence * 100)}%
+
+            </div>
+
+            <div class="badge">
+
+                Impact: ${decision.impact}
+
+            </div>
+
+            <div class="badge">
+
+                ${decision.teamPhase}
+
+            </div>
+
+            <div class="badge">
+
+                Severity: ${decision.severity}
+
+            </div>
+
+        </div>
+
+    `;
+
+    return card;
 
 }
