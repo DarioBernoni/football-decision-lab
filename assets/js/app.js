@@ -1,47 +1,54 @@
 const button = document.getElementById("demoButton");
-
 const cards = document.getElementById("cards");
 
-button.addEventListener("click", () => {
+button.addEventListener("click", loadAnalysis);
 
-cards.innerHTML = `
+async function loadAnalysis() {
 
-<div class="card">
+    try {
 
-<h3>Decision 1</h3>
+        const response = await fetch("data/demo/analysis.json");
 
-<p>
+        if (!response.ok) {
+            throw new Error("Unable to load analysis.");
+        }
 
-Press the opponent higher during build-up.
+        const analysis = await response.json();
 
-</p>
+        renderAnalysis(analysis);
 
-</div>
+    } catch (error) {
 
-<div class="card">
+        cards.innerHTML = `
+            <div class="card">
+                <h3>Error</h3>
+                <p>${error.message}</p>
+            </div>
+        `;
 
-<h3>Decision 2</h3>
+        console.error(error);
 
-<p>
+    }
 
-Exploit the left half-space.
+}
 
-</p>
+function renderAnalysis(analysis) {
 
-</div>
+    cards.innerHTML = "";
 
-<div class="card">
+    analysis.decisions.forEach(decision => {
 
-<h3>Decision 3</h3>
+        const card = document.createElement("div");
 
-<p>
+        card.className = "card";
 
-Improve defensive transitions after losing possession.
+        card.innerHTML = `
+            <h3>#${decision.priority} · ${decision.title}</h3>
+            <p>${decision.description}</p>
+        `;
 
-</p>
+        cards.appendChild(card);
 
-</div>
+    });
 
-`;
-
-});
+}
