@@ -1,1 +1,76 @@
+{
+  "match": {
+    "id": "demo_001",
+    "homeTeam": "Manchester City",
+    "awayTeam": "Arsenal",
+    "competition": "Premier League",
+    "season": "2025/2026",
+    "matchday": 28,
+    "date": "2026-08-23"
+  },
 
+  "dashboard": {
+    "mainStats": [
+      {
+        "label": "Possession",
+        "value": "61%"
+      },
+      {
+        "label": "Shots",
+        "value": 18
+      },
+      {
+        "label": "Shots on Target",
+        "value": 7
+      },
+      {
+        "label": "xG",
+        "value": 2.34
+      }
+    ],
+
+    "advancedStats": [
+      {
+        "label": "PPDA",
+        "value": 7.9
+      },
+      {
+        "label": "Progressive Passes",
+        "value": 42
+      },
+      {
+        "label": "Recoveries",
+        "value": 63
+      },
+      {
+        "label": "High Turnovers",
+        "value": 11
+      },
+      {
+        "label": "Corners",
+        "value": 8
+      }
+    ]
+  },
+
+  "decisions": [
+    {
+      "priority": 1,
+      "severity": "high",
+      "title": "Press higher during build-up",
+      "description": "The opponent lost possession frequently when pressed in their defensive third."
+    },
+    {
+      "priority": 2,
+      "severity": "medium",
+      "title": "Exploit the left half-space",
+      "description": "Most dangerous attacks originated from this corridor."
+    },
+    {
+      "priority": 3,
+      "severity": "low",
+      "title": "Improve defensive transitions",
+      "description": "Counter-attacks after losing possession generated the highest threat."
+    }
+  ]
+}
