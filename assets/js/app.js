@@ -30,7 +30,43 @@ async function loadAnalysis() {
 
     }
 
-}
+}const matchTitle = document.getElementById("matchTitle");
+const competition = document.getElementById("competition");
+const summary = document.getElementById("summary");
+
+matchTitle.textContent =
+`${analysis.match.homeTeam} vs ${analysis.match.awayTeam}`;
+
+competition.textContent =
+`${analysis.match.competition} • ${analysis.match.date}`;
+
+summary.innerHTML = `
+
+<div class="summaryCard">
+
+<h4>Possession</h4>
+
+<p>${analysis.summary.possession}</p>
+
+</div>
+
+<div class="summaryCard">
+
+<h4>Shots</h4>
+
+<p>${analysis.summary.shots}</p>
+
+</div>
+
+<div class="summaryCard">
+
+<h4>Shots on Target</h4>
+
+<p>${analysis.summary.shotsOnTarget}</p>
+
+</div>
+
+`;
 
 function renderAnalysis(analysis) {
 
